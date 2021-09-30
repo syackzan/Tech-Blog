@@ -5,19 +5,20 @@ const withAuth = require('../utils/auth');
 //Get Route to print every blog//
 router.get('/', async (req, res) => {
   try {
-    const userData = await Blog.findAll();
-    console.log(userData);
-
-    const users = userData.map(element => element.get({ plain: true}));
-
-    res.json(users);
+    const blogData = await Blog.findAll();
     
-    // res.render('homepage'
-    //   {
-    //     users,
-    //   logged_in: req.session.logged_in,
-    //   }
-    // );
+
+    const blogs = blogData.map(element => element.get({ plain: true}));
+    
+    //res.json(users);
+    
+    res.render('homepage',
+      {
+        blogs,
+        logged_in: req.session.logged_in,
+      }
+    );
+      
   } catch (err) {
     res.status(500).json(err);
   }

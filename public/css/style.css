@@ -100,8 +100,7 @@ body {
 
 .projectDivider2 {
     margin: 0px;
-    border-top: solid 1px #333;
-    background-color: lightblue;
+    border-top: solid 1px #333; 
 }
 
 #h2 {
@@ -124,6 +123,7 @@ body {
     font-size: 16px;
     color: black;
     height: 50px;
+    background-color: lightblue;
 }
 
 .marginDown {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>onTrack</title>
+    <title>Tech Blog</title>
     
     <!-- CSS only -->
     {{!-- Boostrap CSS --}}
@@ -25,17 +25,21 @@
 
     <div class="navbar" id="navPadding">
         <div>
-            <h1 style="color: white"><a href="/"><u>onTrack</u>🏠</a></h1>
+            <h1 style="color: white"><a href="/"><u>Tech-Blog</u></a></h1>
         </div>
         <div>
-            <a href="/login">Login</a>
-            <a href="/loginchoice">Sign-Up</a>
+            <a href="/">homepage</a>
+            <a href="/dashboard">dashboard</a>
+            {{#if logged_in}}
+            <a href="/logout">logout</a>
+            {{else}}
+            <a href="/login">login</a>
+            <a href="/signup">sign-up</a>
+            {{/if}}
         </div>
     </div>
 
     {{{body}}}
-
-{{!-- <script src="/js/script.js"></script> --}}
 
   <!-- Only include the logout script if the user is logged in -->
   {{#if logged_in}}
