@@ -1,23 +1,25 @@
 const router = require('express').Router();
-const { Scope } = require('../../models')
+const { Blog } = require('../../models')
 
 
-// GET one scope
-//need to create an option for gc to edit a scope
+//Post Route for Blog to Create a new Blog Post// edits required below
+//Need to change req.body.user_id to req.session.id//
+//Need to Update Date Created//
 router.post('/', async (req, res) => {
     
       // If the user is logged in, allow user to view the scope
       try {
-        const blogData = await Blog.Create(
+        console.log(req.body);
+        const blogData = await Blog.create(
           {
             title: req.body.title,
-            content: req.body.content,
-            date_created: req.body.dateCreated,
-            user_id: req.body.id
+            contents: req.body.contents,
+            date_created: req.body.date_created,
+            user_id: req.body.user_id,
           }
         );
         
-        res.json({user: blogData, message: "Blog has been added successfully!"})
+        res.json(blogData)
 
       } catch (err) {
         console.log(err);
@@ -26,10 +28,10 @@ router.post('/', async (req, res) => {
     
   });
   
-  // PUT scopes
-  router.put('/scope/:id', async (req, res) => {
+  // PUT route to edit a blog Post // complete
+  router.put('/:id', async (req, res) => {
     try {
-      const gcData = await Scope.update(req.body, {
+      const gcData = await Blog.update(req.body, {
         where: {
           id: req.params.id
         },
