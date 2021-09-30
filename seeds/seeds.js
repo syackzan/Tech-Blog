@@ -1,34 +1,28 @@
 const sequelize = require('../config/connection');
-const { Owner, GeneralContractors, Project } = require('../models');
+const { User, Blog, Comment } = require('../models');
 
-const ownerData = require('./ownerData.json');
-const gcData = require('./gcData.json')
-const projectData = require('./projectData.json');
+const user = require('./User.json');
+const blog = require('./Blog.json')
+const comment = require('./Comment.json');
 
+//Seeding the Database from Json Files//
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const ownerSeed = await Owner.bulkCreate(ownerData, {
+  const userSeed = await User.bulkCreate(user, {
     individualHooks: true,
     returning: true,
   });
 
-  const gcSeed = await GeneralContractors.bulkCreate(gcData, {
+  const blogSeed = await Blog.bulkCreate(blog, {
     individualHooks: true,
     returning: true,
   });
 
-  const projectSeed = await Project.bulkCreate(projectData, {
+  const commentSeed = await Comment.bulkCreate(comment, {
     individualHooks: true,
     returning: true,
   });
-
-//   for (const project of projectData) {
-//     await Project.create({
-//       ...project,
-//       user_id: users[Math.floor(Math.random() * users.length)].id,
-//     });
-//   }
 
   process.exit(0);
 };

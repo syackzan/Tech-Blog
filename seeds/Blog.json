@@ -1,0 +1,26 @@
+[
+    {
+        "title": "A Look Into The Deep",
+        "contents": "Last year I went on an expedition into the deep waters of the Atlantic",
+        "date_created": "07/07/1991",
+        "user_id": 1
+    },
+    {
+        "title": "Call Me Corky",
+        "contents": "I keep my Wine corks. Excessively. So, I kind of have thousands. Hundreds of thousands",
+        "date_created": "04/06/2018",
+        "user_id": 1
+    },
+    {
+        "title": "A Book of Wonder",
+        "contents": "I recently read a book called name of the Wind, and how beautiful it was.",
+        "date_created": "08/12/2019",
+        "user_id": 2
+    },
+    {
+        "title": "It Rained Last Night",
+        "contents": "The weather was crazy last night. I literally thought I heard Cats and Dogs hitting my window",
+        "date_created": "09/28/2020",
+        "user_id": 2
+    }
+]

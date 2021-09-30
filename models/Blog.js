@@ -6,9 +6,11 @@ class Blog extends Model {}
 
 Blog.init(
     {
-        name: {
-            type: DataTypes.STRING,
+        id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
         },
 
         title: {
@@ -21,7 +23,7 @@ Blog.init(
             allowNull: false,
         },
 
-        dateCreated: {
+        date_created: {
             type: DataTypes.STRING,
             allowNull: false,
         },

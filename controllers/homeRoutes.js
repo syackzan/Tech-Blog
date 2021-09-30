@@ -4,28 +4,69 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const userData = Blog.findAll();
+    const userData = await Blog.findAll();
+    console.log(userData);
 
     const users = userData.map(element => element.get({ plain: true}));
 
     res.json(users);
     
-    res.render('homepage'
-      // {
-      //   users,
-      // logged_in: req.session.logged_in,
-      // }
-    );
+    // res.render('homepage'
+    //   {
+    //     users,
+    //   logged_in: req.session.logged_in,
+    //   }
+    // );
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+router.get('/blog/:id', async (req, res) => {
+  try {
+    const userData = await Blog.findByPk(req.params.id, {
+      include: {model: Comment}
+    })
 
+    const users = userData.get({ plain: true});
 
+    res.json(users);
+    
+    // res.render('homepage'
+    //   {
+    //     users,
+    //   logged_in: req.session.logged_in,
+    //   }
+    // );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Gets Users and All Blogs & Comments By User//
+router.get('/userBlog', async (req, res) => {
+  try {
+    const userData = await User.findAll({include: [{model: Blog}, {model: Comment}]});
+    console.log(userData);
+
+    const users = userData.map(element => element.get({ plain: true}));
+
+    res.json(users);
+    
+    // res.render('homepage'
+    //   {
+    //     users,
+    //   logged_in: req.session.logged_in,
+    //   }
+    // );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Directs You to Login Page//
 router.get('/login', (req, res) => {
   
-
   res.render('login');
   
 });
@@ -35,36 +76,18 @@ router.get('/loginchoice', (req, res) => {
   res.render('loginchoice');
 })
 
-router.get('/ownersignup', (req, res) => {
-  // if (req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+router.get('/signup', (req, res) => {
 
-  res.render('ownersignup');
+  res.render('signup');
 });
 
-router.get('/gcsignup', (req, res) => {
-  // if (req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
-
-  res.render('gcsignup');
-});
-
-// router.get('/projects', async (req, res) => {
+// router.get('/gcsignup', (req, res) => {
 //   // if (req.session.logged_in) {
 //   //   res.redirect('/');
 //   //   return;
 //   // }
 
-//   const projectData = await Project.findAll();
-
-//   // Serialize data so the template can read it
-//   const projects = projectData.map((project) => project.get({ plain: true }));
-
-//   res.render('projects', { projects });
+//   res.render('gcsignup');
 // });
 
 

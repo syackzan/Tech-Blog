@@ -1,0 +1,32 @@
+[
+    {
+        "comment": "Why I'm commenting on my own post, I don't know. Call it Narcicism",
+        "date_created": "07/08/1991",
+        "user_id": 1,
+        "blog_id": 1
+    },
+    {
+        "comment": "Oh No! I hope you're doing okay and the weather has calmed down now.",
+        "date_created": "09/29/2020",
+        "user_id": 1,
+        "blog_id": 4
+    },
+    {
+        "comment": "I've read the same book! It's so good that I may or may not have read it 5 times over.",
+        "date_created": "08/12/2019",
+        "user_id": 1,
+        "blog_id": 3
+    },
+    {
+        "comment": "That sounds Incredible! I love diving and would love to experience what you have.",
+        "date_created": "07/09/1991",
+        "user_id": 2,
+        "blog_id": 1
+    },
+    {
+        "comment": "Haha, that's amazing. We all have are little habits don't we?!",
+        "date_created": "",
+        "user_id": 2,
+        "blog_id": 2
+    }
+]
