@@ -35,7 +35,6 @@ router.post('/', async (req, res) => {
         where: {
           id: req.params.id
         },
-        individualHooks: true
       });
       if (!gcData[0]) {
         res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
