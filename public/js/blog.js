@@ -2,7 +2,24 @@
 // const newProject = $('#newProject');
 // const addProjectBtn = document.getElementById('addProjectBtn');
 
+const blogListener = document.getElementById('blogListener')
 
+const selectBlog = (event) => {
+    let element = event.target
+    let id = element.value;
+    console.log(id);
+    console.log(element);
+    if (element.matches('section')){
+        
+        //location.href = `/blog/${element.value}`
+    }
+
+
+}
+
+blogListener.addEventListener("click", function(event){
+    selectBlog(event);
+})
 
 // function openProjectModal (){
 //     $(function () {
