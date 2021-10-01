@@ -5,12 +5,14 @@ const withAuth = require('../utils/auth');
 //Get Route to print every blog//
 router.get('/', async (req, res) => {
   try {
-    const blogData = await Blog.findAll();
+    const blogData = await Blog.findAll({
+      include: [{model: User}],
+    });
     
 
     const blogs = blogData.map(element => element.get({ plain: true}));
     
-    //res.json(users);
+    //res.json(blogs);
     
     res.render('homepage',
       {
@@ -31,7 +33,7 @@ router.get('/blog/:id', async (req, res) => {
       include: [{
         model: Comment, 
         include: [{model: User}]  
-      }]    
+      }, {model: User}]    
     });
 
     const blog = blogData.get({ plain: true});
