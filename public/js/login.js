@@ -1,45 +1,21 @@
-const ownerBtn = document.getElementById('ownerBtn');
-const gcBtn = document.getElementById('gcBtn');
 const loginBtn = document.getElementById('loginBtn');
 
-
-
-function changeOwnerBtn(event){
-    event.preventDefault();
-    
-    document.location.replace('/ownersignup');
-};
-
-function changeGcBtn(event){
-    event.preventDefault();
-    
-    document.location.replace('/gcsignup');
-
-};
-
+//LOGIN EVENT LISTENER//
 const logIn = async (event) => {
     event.preventDefault();
-    //ADD FUNCTIONALITY TO CHECK PASSWORDS & EMAIL MATCH//
 
-    const loginUser = document.getElementById('loginUser').value.trim();
-    console.log(loginUser);
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementyById('password').value.trim();
 
     const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({loginUser}),
+        body: JSON.stringify({username, password}),
         headers: {'Content-Type': 'application/json'}
     })
 
 
 
-    location.href = "/projects";
+    location.href = "/";
 }
 
-if (loginBtn){
-    loginBtn.addEventListener('click', logIn);
-}
-
-if(ownerBtn){
-    ownerBtn.addEventListener('click', changeOwnerBtn);
-    gcBtn.addEventListener('click', changeGcBtn);
-}
+loginBtn.addEventListener('click', logIn);
