@@ -7,11 +7,13 @@ const { Comment } = require('../../models')
 //Need to update blog_id to req.params.id
 router.post('/', async (req, res) => {
   try {
+    console.log(req.session.user_id);
+    console.log(req.body);
     const newComment = await Comment.create(
       {
         comment: req.body.comment,
-        date_created: req.body.date_created,
-        user_id: req.body.user_id,
+        date_created: req.body.time,
+        //user_id: req.session.user_id,
         blog_id: req.body.blog_id
       }
     )

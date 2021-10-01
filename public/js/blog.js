@@ -1,5 +1,7 @@
 const newComment = document.getElementById('newComment');
 const form = document.getElementById('form');
+const sBtn = document.getElementById('sBtn');
+const blog_id = document.getElementById('blog_id').textContent;
 let visible = false;
 
 const addComment = () => {
@@ -13,49 +15,28 @@ const addComment = () => {
     }
 }
 
+const createComment = async (event) => {
+    event.preventDefault();
+
+    let comment = document.getElementById('comment').value.trim();
+    console.log(comment);
+    let newTime = new Date();
+    let time = moment(newTime).format("M/D/Y H:mm A");
+    console.log(time);
+    
+
+    const response = await fetch ("/api/comment", {
+        method: 'POST',
+        body: JSON.stringify({comment, time, blog_id}),
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if(response.ok) {
+        location.reload();
+    } else {
+        alert("Something went wrong");
+    }
+}
+
 newComment.addEventListener("click", addComment);
-
-// function openProjectModal (){
-//     $(function () {
-//         myModal.modal("show");
-//     });
-// }
-
-// const addNewProject = async (event) => {
-//     event.preventDefault();
-
-//     let converter = false;
-//     let name = document.getElementById('name').value.trim();
-//     let address = document.getElementById('address').value.trim();
-//     let cost = parseInt(document.getElementById('cost').value.trim());
-//     let description = document.getElementById('description').value.trim();
-//     let owner = parseInt(document.getElementById('owner').value.trim());
-
-//     console.log(name);
-//     console.log(cost);
-//     console.log(address);
-//     console.log(description);
-//     console.log(owner)
-
-//     if (name && address && cost && description && owner){
-//         const response = await fetch ('/api/projects', {
-//             method: 'POST',
-//             body: JSON.stringify({name, address, cost, description, owner}),
-//             headers: {'Content-Type': 'application/json'}
-//         });
-        
-//         converter = true;
-//     }
-
-//     if (converter){
-//         $(function () {
-//             myModal.modal("hide");
-//             location.reload();
-//         });
-//     }
-// }
-
-
-
-// newProject.click(openProjectModal);
-// addProjectBtn.addEventListener('click', addNewProject);
+sBtn.addEventListener('click', createComment);
