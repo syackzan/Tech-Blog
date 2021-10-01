@@ -1,25 +1,19 @@
-// const myModal = $('#myModal');
-// const newProject = $('#newProject');
-// const addProjectBtn = document.getElementById('addProjectBtn');
+const newComment = document.getElementById('newComment');
+const form = document.getElementById('form');
+let visible = false;
 
-const blogListener = document.getElementById('blogListener')
-
-const selectBlog = (event) => {
-    let element = event.target
-    let id = element.value;
-    console.log(id);
-    console.log(element);
-    if (element.matches('section')){
-        
-        //location.href = `/blog/${element.value}`
+const addComment = () => {
+    
+    if (!visible){
+        form.style.display = "block";
+        visible = true;
+    } else {
+        form.style.display = "none";
+        visible = false;
     }
-
-
 }
 
-blogListener.addEventListener("click", function(event){
-    selectBlog(event);
-})
+newComment.addEventListener("click", addComment);
 
 // function openProjectModal (){
 //     $(function () {

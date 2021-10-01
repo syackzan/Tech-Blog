@@ -27,20 +27,25 @@ router.get('/', async (req, res) => {
 //GET route for a specific Blog//
 router.get('/blog/:id', async (req, res) => {
   try {
-    const userData = await Blog.findByPk(req.params.id, {
-      include: {model: Comment}
-    })
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [{
+        model: Comment, 
+        include: [{model: User}]  
+      }]    
+    });
 
-    const users = userData.get({ plain: true});
+    const blog = blogData.get({ plain: true});
 
-    res.json(users);
     
-    // res.render('homepage'
-    //   {
-    //     users,
-    //   logged_in: req.session.logged_in,
-    //   }
-    // );
+
+    //res.json(blog);
+    
+    res.render('oneblog',
+      {
+      blog,
+      logged_in: req.session.logged_in,
+      }
+    );
   } catch (err) {
     res.status(500).json(err);
   }
