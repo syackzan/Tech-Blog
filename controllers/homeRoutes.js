@@ -50,7 +50,6 @@ router.get('/blog/:id', async (req, res) => {
 router.get('/userBlog', async (req, res) => {
   try {
     const userData = await User.findAll({include: [{model: Blog}, {model: Comment}]});
-    console.log(userData);
 
     const users = userData.map(element => element.get({ plain: true}));
 

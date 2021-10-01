@@ -2,21 +2,21 @@ const router = require('express').Router();
 const { User } = require('../../models')
 
 //Create New User//
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
-    
+        console.log(req.body);
         let userData = await User.create({
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
         });
 
-        req.session.save(() => {
+        // req.session.save(() => {
             
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
+        // req.session.user_id = userData.id;
+        // req.session.logged_in = true;
         
-        });
+        // });
 
         res.status(200).json(userData);
 
@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
     try {
         
         const userData = await User.findOne({ where: {username: req.body.username}});
-  
+        
         if (!userData) {
             res
                 .status(400)
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
         }
 
         let user = userData.get({ plain: true})
-  
+        
         // const userPassword = await User.checkPassword(req.body.password);
   
         // if (!userPassword) {
