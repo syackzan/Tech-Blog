@@ -13,8 +13,9 @@ const logIn = async (event) => {
         headers: {'Content-Type': 'application/json'}
     })
 
-
+    
     if (response.ok){
+        location.reload();
         document.location.replace('/')
     } else {
         alert("Login Failed")
