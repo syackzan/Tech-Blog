@@ -2,7 +2,7 @@
     <div class="container projectBorder">
         <div class="row">
             <div class="col-md-12 align-text-bottom">
-                <h2 class="m-0" id="h2"><u>Homepage - {{user.username}} Posts</u></h2>
+                <h2 class="m-0" id="h2"><u>All {{user.username}} Posts</u></h2>
             </div>
         </div>
         
@@ -15,7 +15,7 @@
                             <p class="align-middle text-center m-0" style="margin 5px; font-size: 22px"><strong>Title: </strong> {{blog.title}}</p>
                         </section>
                         <section class="d-flex align-items-middle col-md-2 projectContent2">
-                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Posted By: </strong> {{blog.user.username}}</p>
+                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Posted By: </strong> {{../user.username}}</p>
                         </section>
                         <section class="d-flex align-items-middle col-md-2 projectContent2">
                             <p class="align-middle text-center m-0" style="margin 5px"><strong>Date Created: </strong> {{blog.date_created}}</p>
@@ -40,23 +40,23 @@
 
         <div class="row">
             <div class="col-md-12 align-text-bottom">
-                <h2 class="m-0" id="h2"><u>Homepage - Blog Posts I've Commented On</u></h2>
+                <h2 class="m-0" id="h2"><u>Blog Posts {{user.username}} Commented On</u></h2>
             </div>
         </div>
         
         <div class="row projectDivider2" style="margin-top: 20px; display: block" id="blogListener">
-            {{#each user.comments.blogs as |blog|}}
+            {{#each user.comments as |comment|}}
             <a href="/blog/{{blog.id}}" style="padding: 5px; text-decoration: none">
                 <article class="col-md-12 projectHeaders2" style="height: fit-content; margin-top: 10px;">
                     <div class="row" style="margin: auto">
                         <section class="d-flex align-items-middle col-md-8 projectContent2" style="border-right: solid 2px black">
-                            <p class="align-middle text-center m-0" style="margin 5px; font-size: 22px"><strong>Title: </strong> {{blog.title}}</p>
+                            <p class="align-middle text-center m-0" style="margin 5px; font-size: 22px"><strong>Title: </strong> {{comment.blog.title}}</p>
                         </section>
                         <section class="d-flex align-items-middle col-md-2 projectContent2">
-                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Posted By: </strong> {{blog.user.username}}</p>
+                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Posted By: </strong>{{comment.blog.user.username}}</p>
                         </section>
                         <section class="d-flex align-items-middle col-md-2 projectContent2">
-                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Date Created: </strong> {{blog.date_created}}</p>
+                            <p class="align-middle text-center m-0" style="margin 5px"><strong>Date Created: </strong> {{comment.date_created}}</p>
                         </section>   
                     </div>
                     <div class="row" style="margin: auto; border-top: solid 2px black">
@@ -66,7 +66,7 @@
                                     <p class="d-flex align-items-center m-0"><strong>CONTENT:</strong></p>
                                 </div>
                                 <div class="d-flex align-items-center col-md-10">
-                                    <p class="m-0" style="margin 5px; font-size: 18px">{{blog.contents}}</p>
+                                    <p class="m-0" style="margin 5px; font-size: 18px">{{comment.blog.contents}}</p>
                                 </div>
                             </div>      
                         </section> 

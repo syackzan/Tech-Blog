@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
     res.render('homepage',
       {
         blogs,
+        user_id: req.session.user_id,
         logged_in: req.session.logged_in,
       }
     );
@@ -60,7 +61,9 @@ router.get('/dashboard/:id', async (req, res) => {
     const userData = await User.findByPk(req.params.id, {
       include: [{model: Blog}, {
         model: Comment, 
-        include: [{model: Blog}]  
+        include: [{model: Blog,
+          include: {model: User}
+        }]  
       }]    
     });
 
@@ -68,7 +71,7 @@ router.get('/dashboard/:id', async (req, res) => {
 
     
 
-    //res.json(user);
+    // res.json(user);
     
     res.render('dashboard',
       {
