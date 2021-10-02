@@ -52,14 +52,13 @@
 
         <div class="row projectDivider2" style="margin-top: 20px" id="blogListener">
             {{#each blog.comments as |comment|}}
-            <div class="col-md-2">
-                <p>{{comment.user.username}}</p>
-                <p>{{comment.date_created}}</p>
+            <div class="col-md-2 commentBox1">
+                <p class="m-0"><strong>{{comment.user.username}}</strong></p>
+                <p class="m-0" style="font-size: 13px">{{comment.date_created}}</p>
             </div>
-            <div class="col-md-9">
-                <p>{{comment.comment}}</p>
+            <div class="col-md-10 commentBox2">
+                <p class="m-0">{{comment.comment}}</p>
             </div>
-            <a class="col-md-1">Edit</a>
             {{/each}}
         </div>
     </div>

@@ -1,7 +1,9 @@
+/* Document to Fill Viewport */
 html {
     height: 100%
 }
 
+/* Document to Fill Viewport */
 body {
     min-height: 100%;
 }
@@ -34,6 +36,7 @@ body {
     padding-right: 30px;
 }
 
+/* listed with Jumbotron to Center the Content on the Page */
 .vertical-center {
     min-height: 100%;
     min-height: 100vh;
@@ -42,11 +45,13 @@ body {
     justify-content: center;
 }
 
+/* Styling Element with the a tag as a container to hold Blog Posts */
 article {
     border: solid 2px black;
     border-radius: 5px;
 }
 
+/* Styling the Div with the Article */
 .formStyles {
     margin-top: 0px;
     padding-top: 0px;
@@ -57,10 +62,12 @@ article {
     width: 500px;
 }
 
+/* Setting margin for specific elements, typically divs within the Article */
 .upDownMargin {
     margin: 10px 0px;
 }
 
+/* Setting Button style elements in a uniform content */
 .typBtn {
     font-size: 20px;
     font-weight: bold;
@@ -72,16 +79,14 @@ article {
     margin: 5px;
 }
 
-.projectBorder {
-    padding: 5px 0px 0px 0px;
-}
-
+/* Setting Button style elements in a uniform content */
 .btn {
     max-width: 100px;
     background-color: #333;
     border-color: #333;
 }
 
+/* Setting Button style elements in a uniform content */
 .btn1 {
     width: fit-content;
     background-color: #333;
@@ -93,20 +98,29 @@ article {
     
 }
 
+/* Additional Style Elements for specific Blog */
+.projectBorder {
+    padding: 5px 0px 0px 0px;
+}
+
+/* Additional Style Elements for specific Blog */
 .projectDivider1 {
     margin: 0px;
     margin-top: 5px;
     border-top: solid 2px #333
 }
 
+/* Additional Style Elements for specific Blog */
 .projectDivider2 {
     margin: 0px;
 }
 
+/* Styling Header to have a little indent */
 #h2 {
     padding-left: 5px;
 }
 
+/* Additional Style Elements for specific Blog */
 .projectHeaders1{
     align-items: end;
     justify-content: center;
@@ -116,13 +130,15 @@ article {
     height: 35px;
 }
 
+/* Additional Style Elements for specific Blog */
 .projectHeaders2{
     font-size: 16px;
     color: black;
     height: fit-content;
-    background-color: lightblue;
+    background-color: lightseagreen;
 }
 
+/* Additional Style Elements for specific Blog */
 .projectContent2{
     align-items: center;
     justify-content: center;
@@ -133,6 +149,7 @@ article {
     padding: 0px;
 }
 
+/* Additional Style Elements for specific Blog */
 .contents {
     justify-content: center;
     font-size: 16px;
@@ -141,13 +158,38 @@ article {
     height: fit-content
 }
 
+/* Styling for Comments underneath Blogs */
+.commentBox1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid 2px black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 5px 0px;
+    min-height: 50px;
+    background-color: lightpink;
+}
+
+.commentBox2 {
+    display: flex;
+    align-items: center;
+    border: solid 2px black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 5px 0px;
+    min-height: 50px;
+    background-color: lightgray;
+}
+
+/* Setting a larger margin above to space the Div beneath the locked Nav Bar */
 .marginDown {
     margin-top: 100px;
 }
 
-
+/* Allows hover & Cursor change when hover over article tag */
 article:hover {
-    background-color: lightgray;
+    opacity: 50%;
     cursor: pointer;
 }
 
