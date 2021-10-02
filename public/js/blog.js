@@ -135,13 +135,13 @@ const deletePost = async () => {
 
 
 
-// Make post form visible/invisible event Listener
-// showPost.addEventListener("click", addPost);
-// postBtn.addEventListener('click', createPost)
+//Make post form visible/invisible event Listener
+showPost.addEventListener("click", addPost);
+postBtn.addEventListener('click', createPost)
 
-// //Make comment form visible/invisible event Listener
-// newComment.addEventListener("click", addComment);
-// sCommentBtn.addEventListener('click', createComment);
+//Make comment form visible/invisible event Listener
+newComment.addEventListener("click", addComment);
+sCommentBtn.addEventListener('click', createComment);
 
 //Edit Post Event Listener//
 editBtn.addEventListener('click', editPost)
