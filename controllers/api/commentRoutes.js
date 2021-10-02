@@ -2,9 +2,6 @@ const router = require('express').Router();
 const { Comment } = require('../../models')
 
 //POST to create a new comment all //
-//Need to update user_id to req.session.id
-//Need to update date_create to actual date create//
-//Need to update blog_id to req.params.id
 router.post('/', async (req, res) => {
   try {
     console.log(req.session.user_id);

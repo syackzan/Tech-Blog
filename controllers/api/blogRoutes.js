@@ -3,8 +3,6 @@ const { Blog } = require('../../models')
 
 
 //Post Route for Blog to Create a new Blog Post// edits required below
-//Need to change req.body.user_id to req.session.id//
-//Need to Update Date Created//
 router.post('/', async (req, res) => {
     
       // If the user is logged in, allow user to view the scope
@@ -69,24 +67,3 @@ router.post('/', async (req, res) => {
   });
 
   module.exports = router;
-
-  //SAVIING THIS FOR THE IF STATEMENT TO REROUTE IF NOT LOGGED IN
-  // router.post('/blog', async (req, res) => {
-  //   // If the user is not logged in, redirect the user to the login page
-  //   if (!req.session.loggedIn) {
-  //     res.redirect('/login');
-  //   } else {
-  //     // If the user is logged in, allow user to view the scope
-  //     try {
-  //       const scopeData = await Scope.findByPk(req.params.id);
-  //       const scope = scopeData.get({ plain: true });
-  //       res.render('scope', { 
-  //         scope, 
-  //         isContractor: req.session.isContractor 
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //       res.status(500).json(err);
-  //     }
-  //   }
-  // });

@@ -1,9 +1,3 @@
-// have gen contractor author_id column in scope table
-
-// save req.session.user_id to scope author_id column when then pass a new scope
-
-// tell someone who views the 
-
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');

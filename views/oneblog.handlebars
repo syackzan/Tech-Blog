@@ -1,5 +1,8 @@
+{{!-- Renders Single Blog Post Selected By Logged_In User --}}
 <div class="jumbotron" style="margin-top: 72px">
     <div class="container projectBorder">
+
+        {{!-- Header --}}
         <div class="row">
             <div class="col-md-10 align-text-bottom">
                 <h2 class="m-0" id="h2"><u>Homepage - All Blog Posts</u></h2>
@@ -10,6 +13,7 @@
             </div>
         </div>
 
+        {{!-- Div To Render Selected Blog Post --}}
         <div class="row projectDivider2" style="margin-top: 20px" id="blogListener">
             <a href="/blog/{{blog.id}}" style="padding: 5px">
                 <a href="/blog/{{blog.id}}" style="padding: 5px; text-decoration: none">
@@ -42,6 +46,7 @@
             </a>
         </div>
 
+        {{!-- Form that Renders when Add Comment Button is Clicked --}}
         <form style="display: none" id="form">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Enter Your Comment Below</label>
@@ -50,6 +55,7 @@
             <button type="submit" class="btn btn-primary" style="margin: 5px" id="sBtn">Submit</button>
         </form>
 
+        {{!-- Renders All Comments for Selected Blog Post --}}
         <div class="row projectDivider2" style="margin-top: 20px" id="blogListener">
             {{#each blog.comments as |comment|}}
             <div class="col-md-2 commentBox1">
@@ -61,6 +67,7 @@
             </div>
             {{/each}}
         </div>
+        
     </div>
 </div>
 

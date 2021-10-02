@@ -125,7 +125,7 @@ router.get('/blog/edit/:id', async (req, res) => {
   }
 })
 
-//Gets Users and All Blogs & Comments By User//
+//Gets Users and All Blogs & Comments By User - THIS IS FOR INSOMNIA TESTING & READING DATA STRUCTURES//
 router.get('/userBlog', async (req, res) => {
   try {
     const userData = await User.findAll({include: [{model: Blog}, {model: Comment}]});
@@ -152,21 +152,10 @@ router.get('/login', (req, res) => {
   
 });
 
-router.get('/loginchoice', (req, res) => {
-
-  res.render('loginchoice');
-})
-
+//Directs you to Signup Handlebars Page//
 router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
-
-router.get('/gcsignup', (req, res) => {
-  
-
-  res.render('gcsignup');
-});
-
 
 module.exports = router;

@@ -171,6 +171,7 @@ article {
     background-color: lightpink;
 }
 
+/* Styling for Comments underneath Blogs */
 .commentBox2 {
     display: flex;
     align-items: center;

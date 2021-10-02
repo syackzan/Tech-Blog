@@ -1,5 +1,8 @@
+{{!-- Dashboard Page --}}
 <div class="jumbotron" style="margin-top: 72px">
     <div class="container projectBorder">
+
+        {{!-- Header --}}
         <div class="row">
             <div class="col-md-10 align-text-bottom">
                 <h2 class="m-0" id="h2"><u>All {{user.username}} Posts</u></h2>
@@ -9,6 +12,7 @@
             </div>
         </div>
 
+        {{!-- Form That appears When Add Blog Is Triggered --}}
         <form style="display: none" id="postForm">
             <p style="display: none" id="user_id">{{user.id}}</p>
             <div class="form-group" style="margin-top: 20px">
@@ -22,6 +26,7 @@
             <button type="submit" class="btn btn-primary" style="margin: 5px" id="postBtn">Submit</button>
         </form>
 
+        {{!-- Renders All Blogs That Signed In User Has Created --}}
         <div class="row projectDivider2" style="margin-top: 20px; display: block" id="blogListener">
             {{#each user.blogs as |blog|}}
             <a href="/blog/edit/{{blog.id}}" style="padding: 5px; text-decoration: none">
@@ -59,12 +64,14 @@
             {{/each}}
         </div>
 
+        {{!-- 2nd Header for commented on Blog Posts --}}
         <div class="row">
             <div class="col-md-12 align-text-bottom">
                 <h2 class="m-0" id="h2"><u>Blog Posts {{user.username}} Commented On</u></h2>
             </div>
         </div>
 
+        {{!-- Renders All Blog Posts the Signed In User Has Commeneted On --}}
         <div class="row projectDivider2" style="margin-top: 20px; display: block" id="blogListener">
             {{#each user.comments as |comment|}}
             <a href="/blog/{{blog.id}}" style="padding: 5px; text-decoration: none">
@@ -105,7 +112,7 @@
     </div>
 </div>
 
-
+{{!-- Scripts --}}
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
