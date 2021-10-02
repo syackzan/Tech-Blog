@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Blog, Comment } = require('../models');
+const { findByPk } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 //Get Route to print every blog//
@@ -84,6 +85,27 @@ router.get('/dashboard/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/blog/edit/:id', async (req, res) => {
+  try{
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: {model: User}
+    });
+   
+    const blog = blogData.get({ plain: true});
+
+    //res.json(blog);
+
+    res.render('edit', {
+      blog,
+      user_id: req.session.user_id,
+      logged_in: req.session.logged_in
+    })
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 //Gets Users and All Blogs & Comments By User//
 router.get('/userBlog', async (req, res) => {

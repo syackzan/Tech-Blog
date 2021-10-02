@@ -31,15 +31,22 @@ router.post('/', async (req, res) => {
   // PUT route to edit a blog Post // complete
   router.put('/:id', async (req, res) => {
     try {
-      const gcData = await Blog.update(req.body, {
+      console.log(req.body);
+      console.log(req.params.id);
+      const blog = await Blog.update(
+        {
+          title: req.body.title,
+          contents: req.body.contents,
+        }, 
+        {
         where: {
           id: req.params.id
         },
       });
-      if (!gcData[0]) {
+      if (!blog[0]) {
         res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
         return;
-      } res.status(200).json(gcData);
+      } res.status(200).json(blog);
     } catch (err) {
       res.status(500).json(err)
     };

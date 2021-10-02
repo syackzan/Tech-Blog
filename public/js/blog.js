@@ -9,6 +9,10 @@ const newComment = document.getElementById('newComment');
 const commentForm = document.getElementById('form');
 const sCommentBtn = document.getElementById('sBtn');
 
+//Elements for Editing a Post//
+const editBtn = document.getElementById("editBtn");
+
+
 
 
 //Function to make the Post Form Visible or Invisible
@@ -89,11 +93,33 @@ const createComment = async (event) => {
     }
 }
 
+const editPost = async () => {
+
+    let title = document.getElementById('editTitle').value.trim();
+    let contents = document.getElementById('editContent').value.trim();
+    let id = document.getElementById("EoDid").textContent;
+    let userId = document.getElementById("userId").textContent;
+    
+    const response = await fetch(`/api/blog/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({ title, contents }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        
+    if (response.ok) {
+        document.location.replace(`/dashboard/${userId}`);
+      } else {
+        alert(response.statusText);
+      }
+}
 
 // Make post form visible/invisible event Listener
-showPost.addEventListener("click", addPost);
-postBtn.addEventListener('click', createPost)
+// showPost.addEventListener("click", addPost);
+// postBtn.addEventListener('click', createPost)
 
-//Make comment form visible/invisible event Listener
-newComment.addEventListener("click", addComment);
-sCommentBtn.addEventListener('click', createComment);
+// //Make comment form visible/invisible event Listener
+// newComment.addEventListener("click", addComment);
+// sCommentBtn.addEventListener('click', createComment);
+
+//Edit Post Event Listener//
+editBtn.addEventListener('click', editPost)

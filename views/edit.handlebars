@@ -1,0 +1,35 @@
+<div class="jumbotron" style="margin-top: 72px">
+    <div class="container projectBorder">
+        <div class="row">
+            <div class="col-md-12 align-text-bottom">
+                <h2 class="m-0" id="h2"><u>Edit Post Below</u></h2>
+                <p style="display: none" id="EoDid">{{blog.id}}</p>
+                <p style="display: none" id="userId">{{blog.user.id}}</p>
+            </div>
+        </div>
+
+        <form id="postForm">
+            <p style="display: none" id="user_id">{{user.id}}</p>
+            <div class="form-group" style="margin-top: 20px">
+                <label for="title"><strong style="font-size: 22px;">Title:</strong></label>
+                <input type="text" value="{{blog.title}}" class="form-control" id="editTitle" style="background-color: lightgray; border: 2px solid black"  placeholder="Enter title here...">
+            </div>
+            <div class="form-group" style="margin-top: 5px; align-text-top">
+                <label for="exampleFormControlTextarea1"><strong>Comment Below:</strong></label>
+                <input type="text" class="form-control" value="{{blog.contents}}" id="editContent" rows="3" style="background-color: lightgray; border: 2px solid black; min-height: 100px;" id="title" placeholder="Enter content here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin: 5px" id="editBtn">Submit</button>
+            <button type="submit" class="btn btn-primary" style="margin: 5px; background-color: darkred" id="deleteBtn">Delete</button>
+        </form>
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="/js/blog.js"></script>
