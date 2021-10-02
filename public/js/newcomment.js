@@ -23,13 +23,13 @@ const createComment = async (event) => {
     let comment = document.getElementById('comment').value.trim();
     console.log(comment);
     let newTime = new Date();
-    let time = moment(newTime).format("M/D/Y H:mm A");
+    let date_created = moment(newTime).format("M/D/Y H:mm A");
     let blog_id = document.getElementById('blog_id').textContent;
     
 
     const response = await fetch ("/api/comment", {
         method: 'POST',
-        body: JSON.stringify({comment, time, blog_id}),
+        body: JSON.stringify({comment, date_created, blog_id}),
         headers: { 'Content-Type': 'application/json' }
     })
 
