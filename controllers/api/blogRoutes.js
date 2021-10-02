@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
   });
   
   // PUT route to edit a blog Post // complete
-  router.put('/:id', async (req, res) => {
+  router.put('/u/:id', async (req, res) => {
     try {
       console.log(req.body);
       console.log(req.params.id);
