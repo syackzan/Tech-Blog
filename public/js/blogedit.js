@@ -39,11 +39,7 @@ const deletePost = async () => {
             method: "DELETE",
         })
             
-        if (response.ok) {
-            location.href = (`/dashboard/${userId}`);
-        } else {
-            alert(response.statusText);
-        }
+        location.href = (`/dashboard/${userId}`);
     }
     return;
 }
