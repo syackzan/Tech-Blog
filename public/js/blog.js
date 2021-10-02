@@ -2,17 +2,12 @@
 const showPost = document.getElementById('newPost');
 const postForm = document.getElementById('postForm')
 const postBtn = document.getElementById('postBtn')
-
-
-//Elements For Adding New Comment//
-const newComment = document.getElementById('newComment');
-const commentForm = document.getElementById('form');
-const sCommentBtn = document.getElementById('sBtn');
+let visible = false;
 
 //Function to make the Post Form Visible or Invisible
 const addPost = () => {
 
-    let visible = false;
+    
 
     if (!visible){
         postForm.style.display = "block";
@@ -49,49 +44,6 @@ const createPost = async (event) => {
     }
 }
 
-// Function to Make the Add Comment Form Visibile Or Invisible
-const addComment = () => {
-    
-    let visible = false;
-
-    if (!visible){
-        commentForm.style.display = "block";
-        visible = true;
-    } else {
-        commentForm.style.display = "none";
-        visible = false;
-    }
-}
-
-// Function to set up POST Route to Add new Comment
-const createComment = async (event) => {
-    event.preventDefault();
-
-    let comment = document.getElementById('comment').value.trim();
-    console.log(comment);
-    let newTime = new Date();
-    let time = moment(newTime).format("M/D/Y H:mm A");
-    let blog_id = document.getElementById('blog_id').textContent;
-    
-
-    const response = await fetch ("/api/comment", {
-        method: 'POST',
-        body: JSON.stringify({comment, time, blog_id}),
-        headers: { 'Content-Type': 'application/json' }
-    })
-
-    if(response.ok) {
-        location.reload();
-    } else {
-        alert("Something went wrong");
-    }
-}
-
 //Make post form visible/invisible event Listener
 showPost.addEventListener("click", addPost);
 postBtn.addEventListener('click', createPost)
-
-//Make comment form visible/invisible event Listener
-newComment.addEventListener("click", addComment);
-sCommentBtn.addEventListener('click', createComment);
-

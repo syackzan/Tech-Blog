@@ -6,6 +6,7 @@ const submitOBtn = document.getElementById('submitBtn')
 //Submit Form for Owner
 const submitOForm = async (event) => {
     event.preventDefault();
+    let response;
 
     let username = document.getElementById('username').value.trim();
     let email = document.getElementById('email').value.trim();;
@@ -18,7 +19,7 @@ const submitOForm = async (event) => {
     }
 
     if (username && email && password) {
-        const response = await fetch('/api/user/add', {
+        response = await fetch('/api/user/add', {
             method: 'POST',
             body: JSON.stringify({username, email, password }),
             headers: { 'Content-Type': 'application/json'}
@@ -26,7 +27,7 @@ const submitOForm = async (event) => {
     };
 
     if (response.ok) {
-        document.location.replace('/login');
+        document.location.replace('/');
     } else {
         alert('Failed to Sign Up');
     }

@@ -6,11 +6,11 @@ const withAuth = require('../utils/auth');
 //Get Route to print every blog//
 router.get('/', async (req, res) => {
   try {
+
     const blogData = await Blog.findAll({
       include: [{model: User}],
     });
     
-
     const blogs = blogData.map(element => element.get({ plain: true}));
     
     //res.json(blogs);
@@ -31,6 +31,12 @@ router.get('/', async (req, res) => {
 //GET route for a specific Blog//
 router.get('/blog/:id', async (req, res) => {
   try {
+
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
     const blogData = await Blog.findByPk(req.params.id, {
       include: [{
         model: Comment, 
@@ -59,6 +65,12 @@ router.get('/blog/:id', async (req, res) => {
 //GET USER + Display their Blog Posts & all blog posts they comment ont
 router.get('/dashboard/:id', async (req, res) => {
   try {
+
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
     const userData = await User.findByPk(req.params.id, {
       include: [{model: Blog}, {
         model: Comment, 
@@ -84,10 +96,16 @@ router.get('/dashboard/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); 
 
 router.get('/blog/edit/:id', async (req, res) => {
   try{
+
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
     const blogData = await Blog.findByPk(req.params.id, {
       include: {model: User}
     });
@@ -144,14 +162,11 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// router.get('/gcsignup', (req, res) => {
-//   // if (req.session.logged_in) {
-//   //   res.redirect('/');
-//   //   return;
-//   // }
+router.get('/gcsignup', (req, res) => {
+  
 
-//   res.render('gcsignup');
-// });
+  res.render('gcsignup');
+});
 
 
 module.exports = router;
