@@ -42,6 +42,13 @@ router.post('/login', async (req, res) => {
         }
 
         let user = userData.get({ plain: true})
+
+        if(user.password !== req.body.password){
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
         
         // const userPassword = await User.checkPassword(req.body.password);
   
@@ -51,6 +58,7 @@ router.post('/login', async (req, res) => {
         //         .json({ message: 'Incorrect email or password, please try again' });
         //     return;
         // }
+        
         console.log(user);
         console.log("Success. Logged In");
   

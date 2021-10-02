@@ -40,11 +40,39 @@ router.get('/blog/:id', async (req, res) => {
 
     
 
-    //res.json(blog);
+    // res.json(blog);
     
     res.render('oneblog',
       {
       blog,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      }
+    );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//GET USER + Display their Blog Posts & all blog posts they comment ont
+router.get('/dashboard/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [{model: Blog}, {
+        model: Comment, 
+        include: [{model: Blog}]  
+      }]    
+    });
+
+    const user = userData.get({ plain: true});
+
+    
+
+    //res.json(user);
+    
+    res.render('dashboard',
+      {
+      user,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       }

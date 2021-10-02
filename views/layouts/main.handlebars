@@ -20,9 +20,9 @@
         </div>
         <div>
             <a href="/">homepage</a>
-            <a href="/dashboard">dashboard</a>
             {{#if logged_in}}
-            <a href="/logout">logout</a>
+            <a href="#" id="logout">logout</a>
+            <a href="/dashboard/{{user_id}}">dashboard</a>
             {{else}}
             <a href="/login">login</a>
             <a href="/signup">sign-up</a>

@@ -15,7 +15,7 @@ const logIn = async (event) => {
 
 
     if (response.ok){
-        location.href = "/";
+        document.location.replace('/')
     } else {
         alert("Login Failed")
     }
