@@ -12,6 +12,8 @@ const sCommentBtn = document.getElementById('sBtn');
 //Elements for Editing a Post//
 const editBtn = document.getElementById("editBtn");
 
+//Elements for Deleting a Post//
+const deleteBtn = document.getElementById('deleteBtn');
 
 
 
@@ -93,6 +95,7 @@ const createComment = async (event) => {
     }
 }
 
+// Edit Post Function to trigger route//
 const editPost = async () => {
 
     let title = document.getElementById('editTitle').value.trim();
@@ -113,6 +116,25 @@ const editPost = async () => {
       }
 }
 
+//Triggers Route to delete Element
+const deletePost = async () => {
+
+    let id = document.getElementById("EoDid").textContent;
+    let userId = document.getElementById("userId").textContent;
+    
+    const response = await fetch(`/api/blog/${id}`, {
+        method: "DELETE",
+    })
+        
+    if (response.ok) {
+        document.location.replace(`/dashboard/${userId}`);
+      } else {
+        alert(response.statusText);
+      }
+}
+
+
+
 // Make post form visible/invisible event Listener
 // showPost.addEventListener("click", addPost);
 // postBtn.addEventListener('click', createPost)
@@ -123,3 +145,6 @@ const editPost = async () => {
 
 //Edit Post Event Listener//
 editBtn.addEventListener('click', editPost)
+
+//Delete Event Listener//
+deleteBtn.addEventListener('click', deletePost)

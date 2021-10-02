@@ -52,6 +52,22 @@ router.post('/', async (req, res) => {
     };
   });
 
+  // DELETE route to destroy a blog Post // complete
+  router.delete('/:id', async (req, res) => {
+    try {
+      const blog = await Blog.destroy(
+        {
+        where: {
+          id: req.params.id
+        },
+      });
+      
+      res.status(200).json(blog);
+    } catch (err) {
+      res.status(500).json(err)
+    };
+  });
+
   module.exports = router;
 
   //SAVIING THIS FOR THE IF STATEMENT TO REROUTE IF NOT LOGGED IN
